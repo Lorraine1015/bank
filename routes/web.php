@@ -17,9 +17,17 @@ Route::get('/', function () {
 //HOLDER
 Route::get ('holders','HoldersController@index')->name('holders.index');
 Route::get ('holders/create','HoldersController@create')->name('holders.create');
-Route::get('holders/{country}/edit','HoldersController@edit')->name('holders.edit');
-Route::get ('holders/{country}','HoldersController@show')->name('holders.show');
+Route::get('holders/{holder}/edit','HoldersController@edit')->name('holders.edit');
+Route::get ('holders/{holder}','HoldersController@show')->name('holders.show');
 Route::post('holders','HoldersController@store')->name('holders.store');
-Route::put('holders/{country}','HoldersController@update')->name('holders.update');
-Route::delete('holders/{country}','HoldersController@delete')->name('holders.delete');
+Route::put('holders/{holder}','HoldersController@update')->name('holders.update');
+Route::delete('holders/{holder}','HoldersController@delete')->name('holders.delete');
 
+//ACCOUNT
+Route::get('accounts','AccountsController@index')->name('accounts.index');
+Route::get('accounts/create','AccountsController@create')->name('accounts.create');
+Route::get('accounts/{account}/edit','AccountsController@edit')->name('accounts.edit');
+Route::get('accounts/{account}','AccountsController@show')->name('accounts.show');
+Route::post('accounts','AccountsController@store')->name('accounts.store');
+Route::put('accounts/{account}','AccountsController@update')->name('accounts.update');
+Route::delete('accounts/{account}','AccountsController@delete')->name('accounts.delete');
