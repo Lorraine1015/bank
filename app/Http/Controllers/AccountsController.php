@@ -7,7 +7,7 @@ use App\Account;
 use App\Holder;
 
 class AccountsController extends Controller
-{
+{ 
     //
     function index(Request $req){
         $accounts=Account::all();
