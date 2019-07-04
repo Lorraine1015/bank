@@ -8,27 +8,29 @@
 </head>
 <body> <!-- Nos muestra los datos que se almacenaron en la creacion o edicion  -->
     <h1>{{$account->id}}</h1>
-    <p>{{$account->name}}</p>
-    <p>{{$account->no_cuenta}}</p>
-    <p>{{$account->saldo_actual}}</p>
+    <p>Nombre: {{$account->name}}</p>
+    <p>No. de cuenta: {{$account->no_cuenta}}</p>
+    <p>Saldo: ${{$account->saldo_actual}}</p>
 
     <h1>Movimientos</h1>
 
-<table>
+<table> 
     <thead>
         <tr>
             <th>Id</th>
+            <th>Tipo</th>
             <th>Cantidad</th>
             <th>Referencia</th>
-            <th>Acciones</th>
+            
         </tr>
     </thead>
     <tbody>
-    @foreach($accounts->movements as $item)<!-- Recorre el array  -->
+    @foreach($account->movements as $item)<!-- Recorre el array  -->
             <tr>
                 <td>
                 {{$item ->id}}
                 </td>
+                <td>{{$item->type}}</td>
                 <td>{{$item->cantidad}}</td>
                 <td>{{$item->referencia}}</td>
             </tr>

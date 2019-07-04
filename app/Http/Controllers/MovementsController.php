@@ -29,7 +29,9 @@ class MovementsController extends Controller
         return view('movements.edit',['movement'=>$movement]);
     }
     function update(Request $req,Movement $movement){
-        $movement->name=$req->input('movement.name');
+        $movement->type=$req->input('movement.type');
+        $movement->cantidad=$req->input('movement.cantidad');
+        $movement->referencia=$req->input('movement.referencia');
         $movement->save();
         return redirect(route('movements.show',['movement'=>$movement]));
     }

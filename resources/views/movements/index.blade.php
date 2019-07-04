@@ -16,6 +16,7 @@
             <tr>
                 <th>Id</th>
                 <th>Cuenta</th>
+                <th>Tipo</th>
                 <th>Cantidad</th>
                 <th>Referencia</th>
                 <th>Acciones</th>
@@ -29,7 +30,8 @@
                             {{$movement->id}}
                         </a>
                     </td>
-                    <td>{{$movement->account->name}}</td>
+                    <td>{{$movement->account->no_cuenta}}</td>
+                    <td>{{$movement->type}}</td>
                     <td>{{$movement->cantidad}}</td>
                     <td>{{$movement->referencia}}</td>
                     <td>

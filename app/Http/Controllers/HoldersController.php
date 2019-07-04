@@ -28,6 +28,7 @@ class HoldersController extends Controller
     }
     function update(Request $req,Holder $holder){
         $holder->name=$req->input('holder.name');
+        $holder->lastname=$req->input('holder.lastname');
         $holder->save();
         return redirect(route('holders.show',['holder'=>$holder]));
     }

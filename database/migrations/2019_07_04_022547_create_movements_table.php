@@ -15,6 +15,7 @@ class CreateMovementsTable extends Migration
     {
         Schema::create('movements', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->enum('type',['Retiro' , 'Abono']);
             $table->double('cantidad',15,2);
             $table->string('referencia');
 

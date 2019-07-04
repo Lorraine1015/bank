@@ -19,6 +19,11 @@
                 </option>
             @endforeach    
         </select>
+        <p>Tipo</p>
+        <select name="movement[type]" >
+            <option value="Retiro">Retiro</option>
+            <option value="Abono">Abono</option>
+        </select>
         <p>Cantidad</p>
         <input type="text" value="" name="movement[cantidad]">
         <p>Referencia</p>

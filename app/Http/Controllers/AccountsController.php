@@ -30,6 +30,8 @@ class AccountsController extends Controller
     }
     function update(Request $req,Account $account){
         $account->name=$req->input('account.name');
+        $account->no_cuenta=$req->input('account.no_cuenta');
+        $account->saldo_actual=$req->input('account.saldo_actual');
         $account->save();
         return redirect(route('accounts.show',['account'=>$account]));
     }
