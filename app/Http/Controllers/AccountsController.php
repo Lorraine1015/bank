@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Account;
+use App\Holder;
 
 class AccountsController extends Controller
 {
@@ -13,7 +14,8 @@ class AccountsController extends Controller
         return view('accounts.index',['accounts'=>$accounts]);
     }
     function create(Request $req){
-        return view('accounts.create');
+        $holders=Holder::all();
+        return view('accounts.create',['holders'=> $holders]);
     }
     function show(Request $req,Account $account){
         return view('accounts.show',['account'=>$account]);

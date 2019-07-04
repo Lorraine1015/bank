@@ -16,6 +16,14 @@
         <input type="text" value="" name="account[no_cuenta]">
         <p>Saldo</p>
         <input type="text" value="" name="account[saldo_actual]">
+        <p>Cuentahabiente</p>
+        <select name="account[holder_id]">
+            @foreach($holders as $item)
+                <option value="{{$item->id}}">
+                    {{$item->name}}
+                </option>
+            @endforeach    
+        </select>
         <input type="submit" >
     </form>
 

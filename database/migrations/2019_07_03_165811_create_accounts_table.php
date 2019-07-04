@@ -18,6 +18,9 @@ class CreateAccountsTable extends Migration
             $table->string('name');
             $table->string('no_cuenta');
             $table->double('saldo_actual',15,2);
+
+            $table->unsignedBigInteger('holder_id'); //añadimos a la tabla el elemento relacionado
+            $table->foreign('holder_id')->references('id')->on('holders');//se el denota que es una llave foranea y de donde proviene
             $table->timestamps();
         });
     }

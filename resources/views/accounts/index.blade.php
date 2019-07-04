@@ -16,6 +16,7 @@
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
+                <th>Cuentahabiente</th>
                 <th>No. de cuenta</th>
                 <th>Saldo</th>
                 <th>Acciones</th>
@@ -30,6 +31,7 @@
                         </a>
                     </td>
                     <td>{{$account->name}}</td>
+                    <td>{{$account->holder->name}}</td>
                     <td>{{$account->no_cuenta}}</td>
                     <td>{{$account->saldo_actual}}</td>
                     <td>
