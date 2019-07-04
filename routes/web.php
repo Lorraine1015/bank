@@ -31,3 +31,12 @@ Route::get('accounts/{account}','AccountsController@show')->name('accounts.show'
 Route::post('accounts','AccountsController@store')->name('accounts.store');
 Route::put('accounts/{account}','AccountsController@update')->name('accounts.update');
 Route::delete('accounts/{account}','AccountsController@delete')->name('accounts.delete');
+
+//MOVEMENT
+Route::get('movements','MovementsController@index')->name('movements.index');
+Route::get('movements/create','MovementsController@create')->name('movements.create');
+Route::get('movements/{movement}/edit','MovementsController@edit')->name('movements.edit');
+Route::get('movements/{movement}','MovementsController@show')->name('movements.show');
+Route::post('movements','MovementsController@store')->name('movements.store');
+Route::put('movements/{movement}','MovementsController@update')->name('movements.update');
+Route::delete('movements/{movement}','MovementsController@delete')->name('movements.delete');
