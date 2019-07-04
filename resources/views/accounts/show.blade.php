@@ -11,6 +11,30 @@
     <p>{{$account->name}}</p>
     <p>{{$account->no_cuenta}}</p>
     <p>{{$account->saldo_actual}}</p>
+
+    <h1>Movimientos</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Cantidad</th>
+            <th>Referencia</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach($accounts->movements as $item)<!-- Recorre el array  -->
+            <tr>
+                <td>
+                {{$item ->id}}
+                </td>
+                <td>{{$item->cantidad}}</td>
+                <td>{{$item->referencia}}</td>
+            </tr>
+        @endforeach<!-- Fin del recorrido del array -->
+    </tbody>
+</table>
     <p><a href="{{ route ('accounts.index') }}">
     Regresar a la lista de cuentas</a>
     </p>

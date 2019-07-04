@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Movement;
+use App\Account;
 
 class MovementsController extends Controller
 {
@@ -13,7 +14,8 @@ class MovementsController extends Controller
         return view('movements.index',['movements'=>$movements]);
     }
     function create(Request $req){
-        return view('movements.create');
+        $accounts=Account::all();
+        return view('movements.create',['accounts'=> $accounts]);
     }
     function show(Request $req,Movement $movement){
         return view('movements.show',['movement'=>$movement]);

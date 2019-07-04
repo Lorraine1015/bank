@@ -13,4 +13,7 @@ class Account extends Model
     public function holder(){
         return $this->belongsTo('App\Holder');
     }
+    public function movements(){
+        return $this->hasMany('App\Movement');
+    }
 }

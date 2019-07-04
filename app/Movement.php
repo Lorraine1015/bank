@@ -8,6 +8,9 @@ class Movement extends Model
 {
     //
     protected $fillable = [
-        'cantidad' , 'referencia'
+        'cantidad' , 'referencia' , 'account_id'
     ];
+    public function account(){
+        return $this->belongsTo('App\Account');
+    }
 }
