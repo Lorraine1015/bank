@@ -20,6 +20,7 @@
                 <th>Nombre</th>
                 <th>No. de cuenta</th>
                 <th>Saldo</th>
+                <th>Movimientos</th>
                 
             </tr>
         </thead>
@@ -32,6 +33,9 @@
                     <td>{{$item->name}}</td>
                     <td>{{$item->no_cuenta}}</td>
                     <td>{{$item->saldo_actual}}</td>
+                    
+                    <a href="{{ route ('accountmovements.retiro') }}">Retiro</a>
+                    <a href="{{ route ('accountmovements.abono') }}">Abono</a>
                 </tr>
             @endforeach<!-- Fin del recorrido del array -->
         </tbody>

@@ -40,3 +40,7 @@ Route::get('movements/{movement}','MovementsController@show')->name('movements.s
 Route::post('movements','MovementsController@store')->name('movements.store');
 Route::put('movements/{movement}','MovementsController@update')->name('movements.update');
 Route::delete('movements/{movement}','MovementsController@delete')->name('movements.delete');
+
+//ACCOUNTMOVEMENTS
+Route::get('retiro/movements/{account}','AccountMovementsController@retiro')->name('accountmovements.retiro');
+Route::get('abono/movements/{account}','AccountMovementsController@abono')->name('accountmovements.abono');
