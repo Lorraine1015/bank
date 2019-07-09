@@ -10,13 +10,18 @@ use App\Movement;
 class AccountMovementsController extends Controller
 {
     //
-    function retiro(Request $req,$account){
-        if ('account.cantidad'>'account.saldo_actual'){
-            printf('Error:No hay suficiente dinero');
+    function makeretiro(Request $req,Account $account){
+        return view('movements.retiro',['account'=>$account]);
+    }
+    function retiro(Request $req,Account $account){
+        if ($req->input('movement.cantidad')> $account->saldo_actual){
+            printf('ERROR:NO HAY SUFICIENTE DINERO.');
+            return view('movements.retiro',['account'=>$account]);
         }
         else{
-            $saldo_ac='account.saldo_actual'-'account.saldo_actual';
-            save();
+            $account->saldo_actual=$account->saldo_actual - $req->input('movement.cantidad');;
+            $account->save();
+            return redirect(route('holders.show',['holder'=>$account->holder]));
         }
     }
     function makeabono(Request $req,Account $account){

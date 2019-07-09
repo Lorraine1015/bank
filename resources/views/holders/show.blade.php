@@ -32,9 +32,9 @@
                     </td>
                     <td>{{$item->name}}</td>
                     <td>{{$item->no_cuenta}}</td>
-                    <td>{{$item->saldo_actual}}</td>
+                    <td>$ {{$item->saldo_actual}}</td>
                     
-                    <td> <a href="{{ route ('accountmovements.retiro',['account'=>$item]) }}"> Retiro </a>
+                    <td> <a href="{{ route ('accountmovements.makeretiro',['account'=>$item]) }}"> Retiro </a>
                     <a href="{{ route ('accountmovements.makeabono',['account'=>$item]) }}"> Abono </a> 
                     </td>
                 </tr>
