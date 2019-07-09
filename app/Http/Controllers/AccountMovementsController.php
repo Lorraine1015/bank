@@ -19,8 +19,13 @@ class AccountMovementsController extends Controller
             save();
         }
     }
-    function abono(Request $req,Account $account){
-        $saldo_act='account.saldo_actual'= 'account.cantidad';
-        save();
+    function makeabono(Request $req,Account $account){
+        return view('movements.abono',['account'=>$account]);
     }
+    function abono(Request $req,Account $account){
+        $account->saldo_actual= $account->saldo_actual + $req->input('movement.cantidad');
+        $account->save();
+        return redirect(route('holders.show',['holder'=>$account->holder]));
+    }
+    
 }

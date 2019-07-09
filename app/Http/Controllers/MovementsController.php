@@ -14,7 +14,7 @@ class MovementsController extends Controller
         return view('movements.index',['movements'=>$movements]);
     }
     function create(Request $req){
-        $accounts=Account::all();
+        $accounts=Account::all(); 
         return view('movements.create',['accounts'=> $accounts]);
     }
     function show(Request $req,Movement $movement){

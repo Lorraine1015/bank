@@ -34,8 +34,9 @@
                     <td>{{$item->no_cuenta}}</td>
                     <td>{{$item->saldo_actual}}</td>
                     
-                    <a href="{{ route ('accountmovements.retiro') }}">Retiro</a>
-                    <a href="{{ route ('accountmovements.abono') }}">Abono</a>
+                    <td> <a href="{{ route ('accountmovements.retiro',['account'=>$item]) }}"> Retiro </a>
+                    <a href="{{ route ('accountmovements.makeabono',['account'=>$item]) }}"> Abono </a> 
+                    </td>
                 </tr>
             @endforeach<!-- Fin del recorrido del array -->
         </tbody>

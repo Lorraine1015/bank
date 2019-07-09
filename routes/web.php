@@ -43,4 +43,5 @@ Route::delete('movements/{movement}','MovementsController@delete')->name('moveme
 
 //ACCOUNTMOVEMENTS
 Route::get('retiro/movements/{account}','AccountMovementsController@retiro')->name('accountmovements.retiro');
-Route::get('abono/movements/{account}','AccountMovementsController@abono')->name('accountmovements.abono');
+Route::get('makeabono/movements/{account}','AccountMovementsController@makeabono')->name('accountmovements.makeabono');
+Route::post('abono/movements/{account}','AccountMovementsController@abono')->name('accountmovements.abono');
