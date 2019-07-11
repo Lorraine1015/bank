@@ -44,7 +44,9 @@
         </tbody>
     </table>
     <p><a href="{{ route ('holders.index') }}">
-    Regresar a la lista de cuentahabientes</a>
+    Regresar a la lista de cuentahabientes</a></p>
+    <p><a href="{{ route ('credits.create') }}">
+    Simulador de creditos</a>
     </p>
 </body> 
 </html>  

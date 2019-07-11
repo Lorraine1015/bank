@@ -46,3 +46,8 @@ Route::get('makeretiro/movements/{account}','AccountMovementsController@makereti
 Route::get('makeabono/movements/{account}','AccountMovementsController@makeabono')->name('accountmovements.makeabono');
 Route::post('abono/movements/{account}','AccountMovementsController@abono')->name('accountmovements.abono');
 Route::post('retiro/movements/{account}','AccountMovementsController@retiro')->name('accountmovements.retiro');
+
+//SIMULADOR DE CREDITOS
+Route::get('credits/create','CreditsController@create')->name('credits.create');
+Route::get('credits/show','CreditsController@show')->name('credits.show');
+Route::post('credits','CreditsController@store')->name('credits.store');
