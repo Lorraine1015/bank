@@ -14,6 +14,8 @@ class AccountMovementsController extends Controller
         return view('movements.retiro',['account'=>$account]);
     }
     function retiro(Request $req,Account $account){
+        $movement=$req->input('movement'); 
+        Movement::create($movement);
         if ($req->input('movement.cantidad')> $account->saldo_actual){
             printf('ERROR:NO HAY SUFICIENTE DINERO.');
             return view('movements.retiro',['account'=>$account]);
