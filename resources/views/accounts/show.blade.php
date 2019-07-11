@@ -37,6 +37,9 @@
         @endforeach<!-- Fin del recorrido del array -->
     </tbody>
 </table>
+    <p><a href="{{ route ('holders.index') }}">
+    Regresar a la lista de cuentahabientes</a>
+    </p>
     <p><a href="{{ route ('accounts.index') }}">
     Regresar a la lista de cuentas</a>
     </p>

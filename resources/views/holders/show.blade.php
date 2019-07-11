@@ -18,9 +18,10 @@
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
-                <th>No. de cuenta</th>
+                <th>No. de cuenta</th> 
                 <th>Saldo</th>
                 <th>Movimientos</th>
+                <th>Lista de movimientos</th>
                 
             </tr>
         </thead>
@@ -37,6 +38,7 @@
                     <td> <a href="{{ route ('accountmovements.makeretiro',['account'=>$item]) }}"> Retiro </a>
                     <a href="{{ route ('accountmovements.makeabono',['account'=>$item]) }}"> Abono </a> 
                     </td>
+                    <td><a href="{{ route ('accounts.show',['account'=>$item])}}">Lista</a></td>
                 </tr>
             @endforeach<!-- Fin del recorrido del array -->
         </tbody>
