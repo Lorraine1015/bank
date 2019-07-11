@@ -9,7 +9,7 @@ use App\Account;
 class MovementsController extends Controller
 {
     //
-    function index(Request $req){
+    function index(Request $req){ 
         $movements=Movement::all();
         return view('movements.index',['movements'=>$movements]);
     }
@@ -21,7 +21,7 @@ class MovementsController extends Controller
         return view('movements.show',['movement'=>$movement]);
     }
     function store(Request $req){
-        $movement=$req->input('movement');
+        $movement=$req->input('movement'); 
         Movement::create($movement);
         return redirect(route('movements.index'));
     }

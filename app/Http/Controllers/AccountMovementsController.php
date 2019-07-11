@@ -28,6 +28,8 @@ class AccountMovementsController extends Controller
         return view('movements.abono',['account'=>$account]);
     }
     function abono(Request $req,Account $account){
+        $movement=$req->input('movement'); 
+        Movement::create($movement);
         $account->saldo_actual= $account->saldo_actual + $req->input('movement.cantidad');
         $account->save();
         return redirect(route('holders.show',['holder'=>$account->holder]));

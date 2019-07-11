@@ -18,7 +18,7 @@
                     {{$item->no_cuenta}}
                 </option>
             @endforeach    
-        </select>
+        </select> 
         <p>Tipo</p>
         <select name="movement[type]" >
             <option value="Retiro">Retiro</option>
