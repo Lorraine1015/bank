@@ -11,13 +11,13 @@
     <form method="POST" action="{{ route ('credits.store') }}">
     @csrf
         <p>Plazo</p>
-        <input type="text" value="" name="Plazo">
+        <input type="text" value="" name="plazo">
         <p>Monto</p>
-        <input type="text" value="" name="Monto">
+        <input type="text" value="" name="monto">
         <p>Tasa anual</p>
-        <input type="text" value="" name="Tasa_anual">
-        <p><a href="{{ route ('credits.show') }}">Calcular</a></p>
+        <input type="text" value="" name="tasa_anual">
+        <p><a href="{{ route ('credits.show',['credit'=>$credit]) }}">Calcular</a></p>
     </form>
 
 </body>
-</html> 
+</html> g
