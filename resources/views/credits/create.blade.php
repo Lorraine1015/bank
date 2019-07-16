@@ -8,7 +8,8 @@
 </head>
 <body>
     <h1>Simulador de cuenta</h1>
-    <form method="POST" action="{{ route ('credits.store') }}">
+    <!--Metodo get para obtener los datos-->
+    <form method="GET" action="{{ route ('credits.show') }}">
     @csrf
         <p>Plazo</p>
         <input type="text" value="" name="plazo">
@@ -16,8 +17,8 @@
         <input type="text" value="" name="monto">
         <p>Tasa anual</p>
         <input type="text" value="" name="tasa_anual">
-        <p><a href="{{ route ('credits.show',['credit'=>$credit]) }}">Calcular</a></p>
+        <input type="submit" value="Calcular"><!--El submit para enviar los datos a la action-->
     </form>
 
 </body>
-</html> g
+</html> 

@@ -11,14 +11,11 @@ class CreditsController extends Controller
         return view('credits.create');
     }
     function show(Request $req){
-        return view('credits.show',['credit'=>$credit]);
-    }
-    function store(Request $req,$credit){
-        $credit->plazo=$req->input('credit[plazo]');
-        $credit->monto=$req->input('credit[monto]');
-        $credit->tasa_anual=$req->input('credit[tasa_anual]');
-        printf($credit);
-        //$credit->save();
-        return redirect(route('credits.show',['credit'=>$credit]));
+        //Guardan los valores del formulario
+        $plazo=$req->input('plazo');
+        $monto=$req->input('monto');
+        $tasa_anual=$req->input('tasa_anual');
+        //Forma de mandar los valores de un formulario
+        return view('credits.show', ['plazo'  => $plazo, 'monto' => $monto, 'tasa_anual' => $tasa_anual]);
     }
 }
