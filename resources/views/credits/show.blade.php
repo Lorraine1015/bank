@@ -12,9 +12,13 @@ function men_iva($a){
 }
 
 $tasaMensual= (an_iva($tasa_anual)/12)/100;
+$tasaMenSIVA=(men_iva($tasa_anual)/100);
 
 function pago_men($a,$b,$c){
     return ( $a * -$b *((1 + $a)** $c)/(1-((1 + $a)** $c))); 
+}
+function interes($a,$b){
+    return $a * $b;
 }
 
 @endphp
@@ -55,7 +59,7 @@ function pago_men($a,$b,$c){
             <p class="text-center">cantidad</p>
         </div>
         <div class="col">
-            <p class="text-center">cantidad</p>
+            <p class="text-center">{{pago_men($tasaMensual,$monto,$plazo)}}</p>
         </div>
         <div class="col">
             <p class="text-center">cantidad</p>
@@ -64,7 +68,7 @@ function pago_men($a,$b,$c){
             <p class="text-center">cantidad</p>
         </div>
         <div class="col">
-            <p class="text-center">cantidad</p>
+            <p class="text-center">{{ interes($monto,$tasaMenSIVA) }}</p>
         </div>
         <div class="col">
             <p class="text-center">cantidad</p>
