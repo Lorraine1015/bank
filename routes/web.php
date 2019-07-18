@@ -50,4 +50,3 @@ Route::post('retiro/movements/{account}','AccountMovementsController@retiro')->n
 //SIMULADOR DE CREDITOS
 Route::get('credits/create','CreditsController@create')->name('credits.create');
 Route::get('credits/show','CreditsController@show')->name('credits.show');
-//Route::post('credits','CreditsController@store')->name('credits.store');
