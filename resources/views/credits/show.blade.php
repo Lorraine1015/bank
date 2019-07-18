@@ -2,6 +2,8 @@
 @extends('layouts.main')
 <!--Seccion de php-->
 <!-- Se le impone el valor de la tasa mensual en porcentaje en $tasaMensual-->
+<!--Se declara variables dentro de las funciones para manejar funciones anidadas -->
+<!--round es una funcion que redondea un float round(numero,precision)-->
 @php
 
 function an_iva($tasa_anual){
@@ -13,7 +15,7 @@ function men_iva($tasa_anual){
 
 $tasaMensual= (an_iva($tasa_anual)/12)/100;
 $tasaMenSIVA=(men_iva($tasa_anual)/100);
-$porcentaje_iva = 0.16;
+
 
 function pago_men($tasaMensual,$monto,$plazo){
     return ( $tasaMensual * -$monto *((1 + $tasaMensual)** $plazo)/(1-((1 + $tasaMensual)** $plazo))); 
@@ -26,10 +28,10 @@ $pagoMensual=(pago_men($tasaMensual,$monto,$plazo));
 function interes($monto,$iterador,$tasa_anual,$plazo){
     $tasaMenSIVA=(men_iva($tasa_anual)/100);
     if($iterador==1){
-        return $monto * $tasaMenSIVA;
+        return round($monto * $tasaMenSIVA, 2);
     } else 
     {
-        return saldo_inso($monto,$iterador-1,$tasa_anual, $plazo)* $tasaMenSIVA;
+        return round(saldo_inso($monto,$iterador-1,$tasa_anual, $plazo)* $tasaMenSIVA, 2);
     }
 }
 
@@ -37,23 +39,29 @@ function plazo($iterador){
     return $iterador;
 }
 function saldo_inso($monto,$iterador,$tasa_anual,$plazo){
+    $capital_1 = capital($monto,$iterador,$tasa_anual,$plazo);
     if($iterador==1){
-        $capital_1 = capital($monto,$iterador,$tasa_anual,$plazo);
-        return $monto - $capital_1;
+        
+        return round($monto - $capital_1, 2);
+        
+    }else
+    {
+        return round(saldo_inso($monto,$iterador-1,$tasa_anual, $plazo) - $capital_1, 2);
     }
+
 }
 function capital($monto,$iterador,$tasa_anual,$plazo){
-    if($iterador==1){
-        $tasaMensual= (an_iva($tasa_anual)/12)/100;
-        $pagoMensual=(pago_men($tasaMensual,$monto,$plazo));
-        $int= interes($monto,$iterador,$tasa_anual,$plazo);
-        $iva= IVA($monto,$iterador,$tasa_anual,$plazo);        
-        return $pagoMensual - $int - $iva;
-    }
+    
+    $tasaMensual= (an_iva($tasa_anual)/12)/100;
+    $pagoMensual=(pago_men($tasaMensual,$monto,$plazo));
+    $int= interes($monto,$iterador,$tasa_anual,$plazo);
+    $iva= IVA($monto,$iterador,$tasa_anual,$plazo);        
+    return round($pagoMensual - $int - $iva , 2);
+    
 }
 function IVA($monto,$iterador,$tasa_anual,$plazo){
         $int = interes($monto,$iterador,$tasa_anual,$plazo);
-        return $int * 0.16;
+        return round($int * 0.16,2);
     
 }
 
@@ -64,13 +72,13 @@ function IVA($monto,$iterador,$tasa_anual,$plazo){
 <p>Plazo:</p>{{ $plazo }}<!--Forma de llamar la variable function-->
 <p>Monto:</p>{{ $monto }}
 <p>Tasa Anual:</p>{{ $tasa_anual }}
-<p>Tasa Anual c/IVA:</p>{{ an_iva($tasa_anual) }}
+<p>Tasa Anual c/IVA:</p>{{ an_iva($tasa_anual) }}<!--Forma de llamar la funcion junto con su parametro-->
 <p>Tasa Mensual s/IVA:</p>{{ men_iva($tasa_anual) }}
 <p>Tasa Mensual c/IVA:</p>{{ an_iva($tasa_anual)/12 }}
 <p>Pago Mensual:</p>{{ pago_men($tasaMensual,$monto,$plazo) }}
 
 <div class="container"> 
-    <div class="row">
+    <div class="row"><!--Titulos de la tabla-->
         <div class="col">
             <p class="text-center text-uppercase"><strong>Plazo (Meses,semanas,dias)</strong></p>
         </div>
@@ -92,13 +100,13 @@ function IVA($monto,$iterador,$tasa_anual,$plazo){
     </div>
 
     
-    @for($i=1;$i<=$plazo;$i++)
+    @for($i=1;$i<=$plazo;$i++)<!--Bucle que me itera las filas hasta llegar al plazo-->
         
     <div class="row">
         <div class="col">
-            <p class="text-center">{{plazo($i)}}</p>
+            <p class="text-center">{{plazo($i)}}</p><!--Iterador numerico sencillo-->
         </div>
-        <div class="col">
+        <div class="col"><!--Se manda a llamar las funciones,junto con sus parametros usados en los calculos-->
             <p class="text-center">{{saldo_inso($monto,$i,$tasa_anual,$plazo)}}</p>
         </div>
         <div class="col">
