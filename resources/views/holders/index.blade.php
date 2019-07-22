@@ -39,6 +39,9 @@
                             {{method_field('DELETE')}}
                             <input type="submit" value="Eliminar">
                         </form>
+                        <a href="{{ route('holders.peticion',['holder'=>$holder]) }}">
+                            Peticion de credito
+                        </a>
                     </td>
 
                 </tr>
