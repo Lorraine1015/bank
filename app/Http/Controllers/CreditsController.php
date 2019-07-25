@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Library\CreditEngine;
 use App\Holder;
 use App\Account;
+use App\Movement;
+use DB;
+
 
 class CreditsController extends Controller
 {
@@ -49,18 +52,33 @@ class CreditsController extends Controller
     function peticion(Request $req,Holder $holder){
         return view('holders.peticion',['holder'=>$holder]);
     }
-    function credito(Request $req,Account $account){
+    function credito(Request $req,Holder $holder){
         $monto=$req->input('monto');
         $mensualidad=$req->input('mensualidad');
         $tasa=$req->input('tasa');
-        $valor=$monto +1;
-        //$holder=Holder::whereMonth('created_at','07')->get();Obtener el registro de un holder con mes de registro 07
+
+        
+        $movement = DB::table('movements')
+                ->whereMonth('created_at','=',MONTH(CURDATE()))
+                ->where('type','Abono')
+                ->where('account_id',[$holder->id])
+                ->sum('cantidad');
+        if($movement>$monto){
+            printf('Aprobado');
+        }else{
+            printf('No es apto para el credito');
+        }
+        
+        //$movement = DB::table('movements')->where('name', 'Daniel')->value('lastname');
+        //$movement = DB::table('accounts')->sum('saldo_actual');
+        //$movement=Movement::whereMonth('created_at','07')->where('type','Abono')->select("type","cantidad")->get();
+        //Obtener el registro de un holder con mes de registro 07
         /*Consulta de las cuentas con sus movimientos creadas segun el mes indicado
         $month = 07; 
         $account = Account::with(['movements' => function($query) use ($month) {
             $query->whereMonth('created_at', $month);
         }])->get();
         */
-        return view('holders.credito', ['monto' => $monto, 'mensualidad' => $mensualidad,'tasa' => $tasa,'valor' => $valor, 'account' => $account]);
+        return view('holders.credito', ['monto' => $monto, 'mensualidad' => $mensualidad,'tasa' => $tasa, 'movement' => $movement,'holder' => $holder]);
     }
 }
