@@ -59,11 +59,12 @@ class CreditsController extends Controller
 
         
         $movement = DB::table('movements')
-                ->whereMonth('created_at','=',MONTH(CURDATE()))
+                ->whereMonth('created_at','7')
+                //->whereMonth('created_at','=',MONTH(CURDATE()))
                 ->where('type','Abono')
-                ->where('account_id',[$holder->id])
+                ->where('holder_id',[$holder->id])
                 ->sum('cantidad');
-        if($movement>$monto){
+        if($movement>$monto*2){
             printf('Aprobado');
         }else{
             printf('No es apto para el credito');

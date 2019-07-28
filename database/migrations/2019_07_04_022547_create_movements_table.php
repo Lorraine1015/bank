@@ -19,6 +19,9 @@ class CreateMovementsTable extends Migration
             $table->double('cantidad',15,2);
             $table->string('referencia');
 
+            $table->unsignedBigInteger('holder_id'); //añadimos a la tabla el elemento relacionado
+            $table->foreign('holder_id')->references('id')->on('holders');//se el denota que es una llave foranea y de donde proviene
+            
             $table->unsignedBigInteger('account_id'); //añadimos a la tabla el elemento relacionado
             $table->foreign('account_id')->references('id')->on('accounts');//se el denota que es una llave foranea y de donde proviene
             $table->timestamps();

@@ -14,6 +14,7 @@
         {{$account->id}}
         {{$account->name}}
         {{$account->no_cuenta}}
+        <input type="hidden" value="{{$account->holder_id}}" name="movement[holder_id]">
         <input type="hidden" value="Abono" name="movement[type]">
         <input type="hidden" value="{{$account->id}}" name="movement[account_id]">
         <h2>¿Cuanto quieres abonar?</h2>

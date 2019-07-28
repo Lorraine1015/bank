@@ -15,6 +15,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Cuentahabiente</th>
                 <th>Cuenta</th>
                 <th>Tipo</th>
                 <th>Cantidad</th>
@@ -30,6 +31,7 @@
                             {{$movement->id}}
                         </a>
                     </td>
+                    <td>{{$movement->holder->name}}</td>
                     <td>{{$movement->account->no_cuenta}}</td>
                     <td>{{$movement->type}}</td>
                     <td>{{$movement->cantidad}}</td>

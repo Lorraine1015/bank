@@ -10,6 +10,14 @@
     <h1>Nuevo movimiento</h1>
     <form method="POST" action="{{route('movements.store')}}">
     @csrf
+        <p>Cuentahabiente</p>
+        <select name="movement[holder_id]">
+            @foreach($holders as $item)
+                <option value="{{$item->id}}">
+                    {{$item->name}}
+                </option>
+            @endforeach    
+        </select>
         <p>Cuenta</p>
         <select name="movement[account_id]">
             @foreach($accounts as $item)

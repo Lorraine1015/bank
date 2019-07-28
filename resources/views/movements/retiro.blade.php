@@ -15,6 +15,7 @@
         {{$account->name}}
         {{$account->no_cuenta}}
         $ {{$account->saldo_actual}}
+        <input type="hidden" value="{{$account->holder_id}}" name="movement[holder_id]">
         <input type="hidden" value="Retiro" name="movement[type]">
         <input type="hidden" value="{{$account->id}}" name="movement[account_id]">
         <h2>¿Cuanto quieres retirar?</h2>

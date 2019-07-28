@@ -11,6 +11,36 @@
     <p>Nombre: {{$holder->name}}</p>
     <p>Apellido: {{$holder->lastname}}</p>
 
+    <h1>Movimientos</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cuentahabiente</th>
+                <th>Cuenta</th>
+                <th>Tipo</th>
+                <th>Cantidad</th>
+                <th>Referencia</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        @foreach($holder->movements as $item)<!-- Recorre el array  -->
+            <tr>
+                <td>
+                {{$item ->id}}
+                </td>
+                <td>{{$item->holder->name}}</td>
+                <td>{{$item->account->no_cuenta}}</td>
+                <td>{{$item->type}}</td>
+                <td>{{$item->cantidad}}</td>
+                <td>{{$item->referencia}}</td>
+            </tr>
+        @endforeach<!-- Fin del recorrido del array -->
+        </tbody>
+    </table>
+
     <h1>Cuentas</h1>
 
     <table>
