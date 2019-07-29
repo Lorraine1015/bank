@@ -34,7 +34,7 @@ class AccountMovementsController extends Controller
         Movement::create($movement);
         $account->saldo_actual= $account->saldo_actual + $req->input('movement.cantidad');
         $account->save();
-        return redirect(route('holders.show',['holder'=>$account->holder]));
+        return redirect(route('holders.show',['holder'=>$account->holder])); 
     }
     
 }

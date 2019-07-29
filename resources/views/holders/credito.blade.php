@@ -11,7 +11,7 @@
     <p>Monto: {{$monto}}</p>
     <p>Mensualidad: {{$mensualidad}}</p>
     <p>Tasa: {{$tasa}}</p>
-    <p>Valor: </p>
-    <p>HOLDER: {{$movement}}</p>
+    <p>Monto mensual:{{$monto_mensual}} </p>
+    <p>Abonos: {{$movement}}</p>
 </body>
 </html>  

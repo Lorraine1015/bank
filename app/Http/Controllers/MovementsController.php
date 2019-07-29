@@ -11,7 +11,7 @@ use App\Account;
 class MovementsController extends Controller
 {
     //
-    function index(Request $req){ 
+    function index(Request $req){  
         $movements=Movement::all();
         return view('movements.index',['movements'=>$movements]);
     }
@@ -23,7 +23,7 @@ class MovementsController extends Controller
     function show(Request $req,Movement $movement){
         return view('movements.show',['movement'=>$movement]);
     }
-    function store(Request $req){
+    function store(Request $req,Account $account){
         $movement=$req->input('movement'); 
         Movement::create($movement);
         return redirect(route('movements.index'));

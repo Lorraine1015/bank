@@ -9,6 +9,8 @@ use App\Holder;
 use App\Account;
 use App\Movement;
 use DB;
+use Carbon\Carbon;//Clase de framework
+use App\Credit;
 
 
 class CreditsController extends Controller
@@ -56,18 +58,24 @@ class CreditsController extends Controller
         $monto=$req->input('monto');
         $mensualidad=$req->input('mensualidad');
         $tasa=$req->input('tasa');
-
+        $monto_mensual=$req->input('monto')/$req->input('mensualidad');
         
         $movement = DB::table('movements')
-                ->whereMonth('created_at','7')
-                //->whereMonth('created_at','=',MONTH(CURDATE()))
+                //->whereMonth('created_at','7')Condicion de creacion de mes determinado
+                ->whereMonth('created_at','=', Carbon::now()->month)//Condicion donde se usa de parametro el mes actual con el framework
                 ->where('type','Abono')
                 ->where('holder_id',[$holder->id])
                 ->sum('cantidad');
-        if($movement>$monto*2){
-            printf('Aprobado');
+        if($movement>=$monto*2){
+            /*$monto=$req->input('credit.monto');
+            $mensualidad=$req->input('credit.mensualidad');
+            $tasa=$req->input('credit.tasa');
+            $monto_mensual=$req->input('credit.monto_mensual');
+            $credit=$req->input('credit'); 
+            Credit::create($credit);Error!!!*/
+            printf('APROBADO');
         }else{
-            printf('No es apto para el credito');
+            printf('NO ES APTO PARA EL CREDITO');
         }
         
         //$movement = DB::table('movements')->where('name', 'Daniel')->value('lastname');
@@ -80,6 +88,6 @@ class CreditsController extends Controller
             $query->whereMonth('created_at', $month);
         }])->get();
         */
-        return view('holders.credito', ['monto' => $monto, 'mensualidad' => $mensualidad,'tasa' => $tasa, 'movement' => $movement,'holder' => $holder]);
+        return view('holders.credito', ['monto' => $monto, 'mensualidad' => $mensualidad,'tasa' => $tasa, 'monto_mensual' => $monto_mensual ,'movement' => $movement,'holder' => $holder]);
     }
 }
