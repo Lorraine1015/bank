@@ -58,7 +58,9 @@ class CreditsController extends Controller
         $monto=$req->input('monto');
         $mensualidad=$req->input('mensualidad');
         $tasa=$req->input('tasa');
-        $monto_mensual=$req->input('monto')/$req->input('mensualidad');
+        $mensCiva=.0574;
+        $interes= (1 + $mensCiva)** $mensualidad;
+        $monto_mensual=$mensCiva * - $monto * $interes / (1- $interes);
         
         $movement = DB::table('movements')
                 //->whereMonth('created_at','7')Condicion de creacion de mes determinado

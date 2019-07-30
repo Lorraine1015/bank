@@ -14,7 +14,7 @@
         <input type="text" value="" name="monto">
         <p>¿A cuantos meses deseas pagar?</p>
         <input type="text" value="" name="mensualidad">
-        <p>Tasa fija del banco:<br/>Anual:59.40%<br/>Mensual S/IVA: 4.95%</p>
+        <p>Tasa fija del banco:<br/>Anual:59.40%<br/>Mensual C/IVA: 5.74%</p>
         <input type="hidden" value="59.40" name="tasa">
         <input type="hidden" value="{{$holder->id}}" name="credit[holder_id]">
         
@@ -23,6 +23,6 @@
     
     <p><a href="{{ route ('holders.index') }}">
     Regresar a la lista de cuentahabientes</a></p>
-    
+
 </body>
 </html> 
