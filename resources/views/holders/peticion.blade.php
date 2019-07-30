@@ -16,9 +16,13 @@
         <input type="text" value="" name="mensualidad">
         <p>Tasa fija del banco:<br/>Anual:59.40%<br/>Mensual S/IVA: 4.95%</p>
         <input type="hidden" value="59.40" name="tasa">
+        <input type="hidden" value="{{$holder->id}}" name="credit[holder_id]">
         
         <input type="submit" value="Solicitar">
     </form>
-
+    
+    <p><a href="{{ route ('holders.index') }}">
+    Regresar a la lista de cuentahabientes</a></p>
+    
 </body>
 </html> 

@@ -67,15 +67,18 @@ class CreditsController extends Controller
                 ->where('holder_id',[$holder->id])
                 ->sum('cantidad');
         if($movement>=$monto*2){
-            /*$monto=$req->input('credit.monto');
-            $mensualidad=$req->input('credit.mensualidad');
-            $tasa=$req->input('credit.tasa');
-            $monto_mensual=$req->input('credit.monto_mensual');
-            $credit=$req->input('credit'); 
-            Credit::create($credit);Error!!!*/
+            $credit=[
+                'monto'=>$monto,
+                'monto_mensual'=>$monto_mensual,
+                'tasa'=>$tasa,
+                'mensualidad'=>$mensualidad,
+                'holder_id'=>$holder->id,
+            ];
+            Credit::create($credit);
             printf('APROBADO');
         }else{
             printf('NO ES APTO PARA EL CREDITO');
+            return view('holders.peticion',['holder'=>$holder]);
         }
         
         //$movement = DB::table('movements')->where('name', 'Daniel')->value('lastname');
@@ -88,6 +91,14 @@ class CreditsController extends Controller
             $query->whereMonth('created_at', $month);
         }])->get();
         */
-        return view('holders.credito', ['monto' => $monto, 'mensualidad' => $mensualidad,'tasa' => $tasa, 'monto_mensual' => $monto_mensual ,'movement' => $movement,'holder' => $holder]);
+        return view('holders.credito', [
+            'monto' => $monto,
+            'mensualidad' => $mensualidad,
+            'tasa' => $tasa,
+            'monto_mensual' => $monto_mensual ,
+            'movement' => $movement,
+            'holder' => $holder,
+            'credit' => $credit]);
     }
+
 }

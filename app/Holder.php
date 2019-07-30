@@ -16,5 +16,8 @@ class Holder extends Model
     public function movements(){
         return $this->hasMany('App\Movement');
     }
+    public function credits(){
+        return $this->hasMany('App\Credit');
+    }
 
 }

@@ -57,22 +57,52 @@
         </thead>
         <tbody>
         @foreach($holder->accounts as $item)<!-- Recorre el array  -->
-                <tr>
-                    <td>
+            <tr>
+                <td>
                     {{$item ->id}}
-                    </td>
-                    <td>{{$item->name}}</td>
-                    <td>{{$item->no_cuenta}}</td>
-                    <td>$ {{$item->saldo_actual}}</td>
+                </td>
+                <td>{{$item->name}}</td>
+                <td>{{$item->no_cuenta}}</td>
+                <td>$ {{$item->saldo_actual}}</td>
                     
-                    <td> <a href="{{ route ('accountmovements.makeretiro',['account'=>$item]) }}"> Retiro </a>
-                    <a href="{{ route ('accountmovements.makeabono',['account'=>$item]) }}"> Abono </a> 
-                    </td>
-                    <td><a href="{{ route ('accounts.show',['account'=>$item])}}">Lista</a></td>
+                <td> <a href="{{ route ('accountmovements.makeretiro',['account'=>$item]) }}"> Retiro </a>
+                <a href="{{ route ('accountmovements.makeabono',['account'=>$item]) }}"> Abono </a> 
+                </td>
+                <td><a href="{{ route ('accounts.show',['account'=>$item])}}">Lista</a></td>
                 </tr>
-            @endforeach<!-- Fin del recorrido del array -->
+        @endforeach<!-- Fin del recorrido del array -->
         </tbody>
     </table>
+
+    <h1>Creditos</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fecha de emision</th>
+                <th>Monto solicitado</th>
+                <th>Tasa</th>
+                <th>Mensualidades</th>
+                <th>Monto mensual</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach($holder->credits as $item)<!-- Recorre el array  -->
+            <tr>
+                <td>
+                {{$item ->id}}
+                </td>
+                <td>{{$item->created_at}}</td>
+                <td>{{$item->monto}}</td>
+                <td>{{$item->tasa}}</td>
+                <td>{{$item->mensualidad}}</td>
+                <td>{{$item->monto_mensual}}</td>
+            </tr>
+        @endforeach<!-- Fin del recorrido del array -->
+        </tbody>
+    </table>
+
     <p><a href="{{ route ('holders.index') }}">
     Regresar a la lista de cuentahabientes</a></p>
     <p><a href="{{ route ('credits.create') }}">

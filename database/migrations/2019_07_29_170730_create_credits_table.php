@@ -19,6 +19,10 @@ class CreateCreditsTable extends Migration
             $table->double('monto_mensual',15,2);
             $table->double('tasa',15,2);
             $table->integer('mensualidad');
+
+            $table->unsignedBigInteger('holder_id'); //añadimos a la tabla el elemento relacionado
+            $table->foreign('holder_id')->references('id')->on('holders');//se el denota que es una llave foranea y de donde proviene
+
             $table->timestamps();
         });
     }
