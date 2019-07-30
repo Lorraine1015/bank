@@ -68,7 +68,7 @@ class CreditsController extends Controller
                 ->where('type','Abono')
                 ->where('holder_id',[$holder->id])
                 ->sum('cantidad');
-        if($movement>=$monto*2){
+        if($movement>=$monto_mensual*2){
             $credit=[
                 'monto'=>$monto,
                 'monto_mensual'=>$monto_mensual,
