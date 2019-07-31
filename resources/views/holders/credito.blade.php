@@ -14,7 +14,7 @@
     <p>Monto mensual:{{$monto_mensual}} </p>
     <p>Abonos: {{$movement}}</p>
 
-    
+    <!-- Tabla de confirmacion del credito  -->
     <h1>Credito</h1>
 
     <table style="text-align:center;">

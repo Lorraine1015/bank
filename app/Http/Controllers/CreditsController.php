@@ -62,21 +62,21 @@ class CreditsController extends Controller
         $interes= (1 + $mensCiva)** $mensualidad;
         $monto_mensual=$mensCiva * - $monto * $interes / (1- $interes);
         
-        $movement = DB::table('movements')
+        $movement = DB::table('movements')//BUSQUEDA DE LOS ABONOS TOTALES DEL HOLDER
                 //->whereMonth('created_at','7')Condicion de creacion de mes determinado
                 ->whereMonth('created_at','=', Carbon::now()->month)//Condicion donde se usa de parametro el mes actual con el framework
                 ->where('type','Abono')
                 ->where('holder_id',[$holder->id])
                 ->sum('cantidad');
-        if($movement>=$monto_mensual*2){
-            $credit=[
+        if($movement>=$monto_mensual*2){//CONDICION QUE SE REQUIERE PARA LA ACEPTACION DEL CREDITO
+            $credit=[//ARRAY DONDE SE LE COLOCAN LOS DATOS A GUARDAR
                 'monto'=>$monto,
                 'monto_mensual'=>$monto_mensual,
                 'tasa'=>$tasa,
                 'mensualidad'=>$mensualidad,
                 'holder_id'=>$holder->id,
             ];
-            Credit::create($credit);
+            Credit::create($credit);//CREA EL CREDITO 
             printf('APROBADO');
         }else{
             printf('NO ES APTO PARA EL CREDITO');
@@ -100,7 +100,7 @@ class CreditsController extends Controller
             'monto_mensual' => $monto_mensual ,
             'movement' => $movement,
             'holder' => $holder,
-            'credit' => $credit]);
+            'credit' => $credit]);//VARIABLES QUE SE MANDAN PARA LA VISTA
     }
 
 }

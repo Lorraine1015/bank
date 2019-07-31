@@ -47,6 +47,10 @@ Route::get('makeabono/movements/{account}','AccountMovementsController@makeabono
 Route::post('abono/movements/{account}','AccountMovementsController@abono')->name('accountmovements.abono');
 Route::post('retiro/movements/{account}','AccountMovementsController@retiro')->name('accountmovements.retiro');
 
+//TRANSFERENCIA DE CUENTA A CUENTA
+Route::get('maketransfer/movements/{account}','AccountMovementsController@maketransfer')->name('accountmovements.maketransfer');
+Route::post('transferPost/movements/{account}','AccountMovementsController@transferPost')->name('accountmovements.transferPost');
+
 //SIMULADOR DE CREDITOS
 Route::get('credits/create','CreditsController@create')->name('credits.create');
 Route::get('credits/show','CreditsController@show')->name('credits.show');
@@ -54,3 +58,4 @@ Route::get('credits/show','CreditsController@show')->name('credits.show');
 //PETICION DE CREDITO
 Route::get('holder/{holder}/peticion','CreditsController@peticion')->name('holders.peticion');
 Route::get('holder/{holder}/credito','CreditsController@credito')->name('holders.credito');
+

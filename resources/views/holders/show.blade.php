@@ -66,9 +66,9 @@
                 <td>$ {{$item->saldo_actual}}</td>
                     
                 <td> <a href="{{ route ('accountmovements.makeretiro',['account'=>$item]) }}"> Retiro </a>
-                <a href="{{ route ('accountmovements.makeabono',['account'=>$item]) }}"> Abono </a> 
-                </td>
-                <td><a href="{{ route ('accounts.show',['account'=>$item])}}">Lista</a></td>
+                <a href="{{ route ('accountmovements.makeabono',['account'=>$item]) }}"> Abono </a> </td>
+                <td> <a href="{{ route ('accountmovements.maketransfer',['account'=>$item])}}"> Transferir </a> 
+                <a href="{{ route ('accounts.show',['account'=>$item])}}">Lista</a> </td>
                 </tr>
         @endforeach<!-- Fin del recorrido del array -->
         </tbody>
@@ -108,5 +108,6 @@
     <p><a href="{{ route ('credits.create') }}">
     Simulador de creditos</a>
     </p>
+    
 </body> 
 </html>  
