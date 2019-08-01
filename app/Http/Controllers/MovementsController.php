@@ -18,16 +18,40 @@ class MovementsController extends Controller
     function create(Request $req){
         $holders=Holder::all();
         $accounts=Account::all();
-        return view('movements.create',['accounts'=> $accounts],['holders'=> $holders]);
+        return view('movements.create',['accounts'=> $accounts ,'holders'=> $holders]);
     }
     function show(Request $req,Movement $movement){
         return view('movements.show',['movement'=>$movement]);
     }
     function store(Request $req,Account $account){
-        $movement=$req->input('movement'); 
-        Movement::create($movement);
+        //Arrays de todas las cuentas y los holders
+        $accounts=Account::all();
+        $holders=Holder::all();
+        //Se busca el account para saber en que cuenta se realizara el movimiento
+        $mm=Account::find($req->input('movement.account_id'));
+        //Cuando el movimiento es un RETIRO
+        if($req->input('movement.type') == 'Retiro'){
+            if($req->input('movement.cantidad')> $mm->saldo_actual){
+                printf('ERROR:NO HAY SUFICIENTE DINERO.'); 
+                return view('movements.create',['accounts'=>$accounts ,'holders'=> $holders]);
+            }else{
+                //Se crea el movimiento
+                $movement=$req->input('movement'); 
+                Movement::create($movement);
+                $mm->saldo_actual=$mm->saldo_actual - $req->input('movement.cantidad');
+                $mm->save();
+            }
+        }
+        //Cuando el movimiento es un ABONO
+        if($req->input('movement.type') == 'Abono'){
+            $movement=$req->input('movement'); 
+            Movement::create($movement);
+            $mm->saldo_actual= $mm->saldo_actual + $req->input('movement.cantidad');
+            $mm->save();
+        }
         return redirect(route('movements.index'));
     }
+
     function edit(Request $req,Movement $movement){
         return view('movements.edit',['movement'=>$movement]);
     }
