@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Editar cuenta</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-</head>
-<body>
+@extends('layouts.main')
+@section('content')
     <h1>Editar cuenta</h1>
     <form method="POST"  action="{{route('accounts.update',['account'=>$account])}}"><!-- Se acciona junto con la funcion.update,su argumento -->
         @csrf 
@@ -19,5 +12,4 @@
         <input type="text" value="{{$account->saldo_actual}}" name="account[saldo_actual]">
         <input type="submit" value="Editar">
     </form>
-</body>
-</html>
+@endsection

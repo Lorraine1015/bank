@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Nuevos movimientos</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-</head>
-<body>
+@extends('layouts.main')
+@section('content')
     <h1>Nueva transferencia</h1>
     <form method="POST" action="{{route('accountmovements.transferPost',['account'=>$account])}}">
     @csrf
@@ -44,5 +37,4 @@
     <p><a href="{{ route ('holders.index') }}">
     Regresar a la lista de cuentahabientes</a></p>
     
-</body>
-</html> 
+@endsection 

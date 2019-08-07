@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Editar movimiento</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-</head>
-<body>
+@extends('layouts.main')
+@section('content')
     <h1>Editar movimiento</h1>
     <form method="POST"  action="{{route('movements.update',['movement'=>$movement])}}"><!-- Se acciona junto con la funcion.update,su argumento -->
         @csrf 
@@ -24,5 +17,4 @@
         
         <input type="submit" value="Editar">
     </form>
-</body>
-</html>
+@endsection

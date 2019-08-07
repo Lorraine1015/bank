@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','HomeController@index')->name('homepage');
 //HOLDER
 Route::get ('holders','HoldersController@index')->name('holders.index');
 Route::get ('holders/create','HoldersController@create')->name('holders.create');

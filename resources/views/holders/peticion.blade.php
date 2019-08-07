@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Nueva peticion</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-</head>
-<body>
+@extends('layouts.main')
+@section('content')
     <h1>Peticion de credito</h1>
     <form method="GET" action="{{ route ('holders.credito',['holder'=>$holder]) }}">
     @csrf
@@ -24,5 +17,4 @@
     <p><a href="{{ route ('holders.index') }}">
     Regresar a la lista de cuentahabientes</a></p>
 
-</body>
-</html> 
+@endsection

@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Nuevas cuentas</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-</head>
-<body>
+@extends('layouts.main')
+@section('content')
     <h1>Simulador de cuenta</h1>
     <!--Metodo get para obtener los datos-->
     <form method="GET" action="{{ route ('credits.show') }}">
@@ -20,5 +13,4 @@
         <input type="submit" value="Calcular"><!--El submit para enviar los datos a la action-->
     </form>
 
-</body>
-</html> 
+@endsection

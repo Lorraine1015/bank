@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Nuevas cuentas</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-</head>
-<body>
+@extends('layouts.main')
+@section('content')
     <h1>Nueva cuenta</h1>
     <form method="POST" action="{{route('accounts.store')}}">
     @csrf
@@ -26,6 +19,5 @@
         </select>
         <input type="submit" >
     </form>
-
-</body>
-</html> 
+    
+@endsection

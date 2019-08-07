@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Nuevos cuentahabientes</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-</head>
-<body>
+@extends('layouts.main')
+@section('content')
     <h1>Nuevo cuentahabiente</h1>
     <form method="POST" action="{{route('holders.store')}}">
     @csrf
@@ -17,5 +10,4 @@
         <input type="submit" >
     </form>
 
-</body>
-</html> 
+@endsection

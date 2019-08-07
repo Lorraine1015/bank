@@ -1,6 +1,7 @@
 
 <!--SEGUNDA FORMA DE SIMULADOR DE CREDITOS,MENOS RECURSOS USADO PARA UN NUMERO MENOR DE PLAZOS-->
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="{{ asset('css/main.css') }}">
 <!--Seccion de Layout-->
 @extends('layouts.main')
 <!--Seccion de php-->

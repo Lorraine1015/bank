@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Cuentahabientes</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-</head>
-<body>
+@extends('layouts.main')
+@section('content')
     <h1>Cuentahabientes</h1>
     <a href="{{route('holders.create')}}">
     Crear un cuentahabiente
@@ -48,5 +41,5 @@
             @endforeach
         </tbody>
     </table>
-</body>
-</html> 
+    
+@endsection

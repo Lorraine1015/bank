@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ $holder->name }}</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-</head>
-<body> <!-- Nos muestra los datos que se almacenaron en la creacion o edicion  -->
+@extends('layouts.main')
+@section('content')
+<!-- Nos muestra los datos que se almacenaron en la creacion o edicion  -->
     <h1>{{$holder->id}}</h1>
     <p>Nombre: {{$holder->name}}</p>
     <p>Apellido: {{$holder->lastname}}</p>
@@ -109,5 +103,4 @@
     Simulador de creditos</a>
     </p>
     
-</body> 
-</html>  
+@endsection

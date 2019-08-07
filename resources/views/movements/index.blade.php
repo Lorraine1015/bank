@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Movimiento</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-</head>
-<body>
+@extends('layouts.main')
+@section('content')
     <h1>Movimiento</h1>
     <a href="{{route('movements.create')}}">
     Crear un movimiento
@@ -51,5 +44,4 @@
             @endforeach
         </tbody>
     </table>
-</body>
-</html> 
+@endsection

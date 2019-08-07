@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Cuenta</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-</head>
-<body>
+@extends('layouts.main')
+@section('content')
+
     <h1>Cuenta</h1>
     <a href="{{route('accounts.create')}}">
     Crear una cuenta
@@ -49,5 +43,5 @@
             @endforeach
         </tbody>
     </table>
-</body>
-</html> 
+
+@endsection
