@@ -1,17 +1,19 @@
 @extends('layouts.main')
 @section('content')
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 <!-- Nos muestra los datos que se almacenaron en la creacion o edicion  -->
-    
-    <p>Monto: {{$monto}}</p>
+    <h1>Credito autorizado</h1>
+
+    <p>Monto: $ {{$monto}}</p>
     <p>Mensualidad: {{$mensualidad}}</p>
-    <p>Tasa: {{$tasa}}</p>
-    <p>Monto mensual:{{$monto_mensual}} </p>
-    <p>Abonos: {{$movement}}</p>
+    <p>Tasa: {{$tasa}} %</p>
+    <p>Monto mensual: ${{$monto_mensual}} </p>
+    <p>Abonos: $ {{$movement}}</p>
 
     <!-- Tabla de confirmacion del credito  -->
-    <h1>Credito</h1>
+    
 
-    <table style="text-align:center;">
+    <table style="text-align:center;" class="table table-striped table-sm">
         <thead>
             <tr>
                 
@@ -35,7 +37,7 @@
         </tbody>
     </table>
     
-    <p><a href="{{ route ('holders.index') }}">
+    <p><a href="{{ route ('holders.index') }}" class="btn btn-primary btn-sm">
     Regresar a la lista de cuentahabientes</a></p>
-
+</main>
 @endsection

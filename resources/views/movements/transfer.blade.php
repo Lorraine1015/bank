@@ -1,20 +1,21 @@
 @extends('layouts.main')
 @section('content')
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
     <h1>Nueva transferencia</h1>
     <form method="POST" action="{{route('accountmovements.transferPost',['account'=>$account])}}">
     @csrf
-        <p>Cuenta:</p>
+        <p class="font-weight-light">
         {{$account->id}}
         {{$account->name}}
         {{$account->no_cuenta}}
-        $ {{$account->saldo_actual}}
+        $ {{$account->saldo_actual}}</p>
         <!--CUENTA 1 DATOS PARA RETIRAR-->
         <input type="hidden" value="{{$account->id}}" name="account_id">
         <input type="hidden" value="{{$account->holder_id}}" name="holder_id">
-
+        <br/>
         <!--CUENTA 2 DATOS PARA ABONAR-->
-        <p>Cuenta a transferir</p>
-        <select name="account_id2">
+        <p class="text-uppercase font-weight-bold">Cuenta a transferir</p>
+        <select name="account_id2" class="form-control col-4 form-control-sm">
             @foreach($accounts as $item)
             @if($account->holder_id != $item->holder_id)<!--Condicional para colocar solo las cuentas diferentes al del holder-->
                 <option value="{{$item->id}}">
@@ -24,17 +25,14 @@
             @endif
             @endforeach    
         </select>
-        
-
-        <h2>¿Cuanto quieres transferir?</h2>
-        <p>Cantidad</p>
-        <input type="text" value="" name="cantidad">
-        <p>Referencia</p>
-        <input type="text" value="" name="referencia">
-    
-        <input type="submit" value="Transferir">
+        <br/>
+        <p class="text-uppercase font-weight-bold">Cantidad</p>
+        <input type="text" class="form-control col-2" value="" name="cantidad">
+        <br/>
+        <p class="text-uppercase font-weight-bold">Referencia</p>
+        <input type="text" class="form-control col-3" value="" name="referencia">
+        <br/>
+        <input type="submit" class="btn btn-info" value="Transferir">
     </form>
-    <p><a href="{{ route ('holders.index') }}">
-    Regresar a la lista de cuentahabientes</a></p>
-    
+</main>
 @endsection 

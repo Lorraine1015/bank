@@ -1,43 +1,15 @@
 @extends('layouts.main')
 @section('content')
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 <!-- Nos muestra los datos que se almacenaron en la creacion o edicion  -->
     <h1>{{$holder->id}}</h1>
     <p>Nombre: {{$holder->name}}</p>
     <p>Apellido: {{$holder->lastname}}</p>
 
-    <h1>Movimientos</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Cuentahabiente</th>
-                <th>Cuenta</th>
-                <th>Tipo</th>
-                <th>Cantidad</th>
-                <th>Referencia</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($holder->movements as $item)<!-- Recorre el array  -->
-            <tr>
-                <td>
-                {{$item ->id}}
-                </td>
-                <td>{{$item->holder->name}}</td>
-                <td>{{$item->account->no_cuenta}}</td>
-                <td>{{$item->type}}</td>
-                <td>{{$item->cantidad}}</td>
-                <td>{{$item->referencia}}</td>
-            </tr>
-        @endforeach<!-- Fin del recorrido del array -->
-        </tbody>
-    </table>
+    <h3>Cuentas</h3>
 
-    <h1>Cuentas</h1>
-
-    <table>
+    <table class="table table-striped table-sm">
         <thead>
             <tr>
                 <th>Id</th>
@@ -59,18 +31,19 @@
                 <td>{{$item->no_cuenta}}</td>
                 <td>$ {{$item->saldo_actual}}</td>
                     
-                <td> <a href="{{ route ('accountmovements.makeretiro',['account'=>$item]) }}"> Retiro </a>
-                <a href="{{ route ('accountmovements.makeabono',['account'=>$item]) }}"> Abono </a> </td>
-                <td> <a href="{{ route ('accountmovements.maketransfer',['account'=>$item])}}"> Transferir </a> 
-                <a href="{{ route ('accounts.show',['account'=>$item])}}">Lista</a> </td>
+                <td> 
+                <a href="{{ route ('accountmovements.makeretiro',['account'=>$item]) }}" class="btn btn-outline-danger btn-sm"> Retiro </a>
+                <a href="{{ route ('accountmovements.makeabono',['account'=>$item]) }}" class="btn btn-outline-success btn-sm"> Abono </a> </td>
+                <td> <a href="{{ route ('accountmovements.maketransfer',['account'=>$item])}}" class="btn btn-outline-primary btn-sm"> Transferir </a> 
+                <a href="{{ route ('accounts.show',['account'=>$item])}}" class="btn btn-outline-dark btn-sm">Lista</a> </td>
                 </tr>
         @endforeach<!-- Fin del recorrido del array -->
         </tbody>
     </table>
 
-    <h1>Creditos</h1>
+    <h3>Creditos</h3>
 
-    <table>
+    <table class="table table-striped table-sm">
         <thead>
             <tr>
                 <th>Id</th>
@@ -97,10 +70,10 @@
         </tbody>
     </table>
 
-    <p><a href="{{ route ('holders.index') }}">
+    <p><a href="{{ route ('holders.index') }}" class="btn btn-primary btn-sm">
     Regresar a la lista de cuentahabientes</a></p>
-    <p><a href="{{ route ('credits.create') }}">
-    Simulador de creditos</a>
+    <p><a href="{{ route('holders.peticion',['holder'=>$holder]) }}" class="btn btn-secondary btn-sm">
+    Solicitar credito</a>
     </p>
-    
+</main>    
 @endsection
