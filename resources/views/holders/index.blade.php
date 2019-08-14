@@ -25,7 +25,7 @@
                     <td>{{$holder->name}}</td>
                     <td>{{$holder->lastname}}</td>
                     <td >
-                        <a href="{{route('holders.edit',['holder'=>$holder]) }}" class="btn btn-outline-info">
+                        <a href="{{route('holders.edit',['holder'=>$holder]) }}" class="btn btn-outline-info btn-sm">
                             Editar
                         </a>
                         <form method="POST" action="{{ route('holders.delete',['holder'=>$holder])}}">

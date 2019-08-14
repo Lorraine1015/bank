@@ -17,7 +17,7 @@
 
 <body>
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{route('homepage')}}">Banco</a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0 h1 text-uppercase" href="{{route('homepage')}}">Banco</a>
 </nav>
 
     <div class="container-fluid">
@@ -32,7 +32,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('accounts.index')}}">
                   <span data-feather="file"></span>
                   Cuentas
                 </a>
@@ -53,7 +53,7 @@
           </div>
         </nav>
         
-        @yield ("content")
+        @yield ("content") <!-- Comienza nuestro contenido importado desde home.index-->
 
       </div>
     </div>
