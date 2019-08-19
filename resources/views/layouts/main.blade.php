@@ -38,13 +38,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('movements.index')}}">
                   <span data-feather="shopping-cart"></span>
                   Movimientos
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('credits.create')}}">
                   <span data-feather="users"></span>
                   Simulador de credito
                 </a>

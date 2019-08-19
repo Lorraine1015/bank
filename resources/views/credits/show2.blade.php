@@ -6,64 +6,43 @@
 @extends('layouts.main')
 <!--Seccion de php-->
 @section('content')
-<p>Plazo:</p>{{ $plazo }}<!--Forma de llamar la variable function-->
-<p>Monto:</p>{{ $monto }}
-<p>Tasa Anual:</p>{{ $tasaAnual }}
-<p>Tasa Anual c/IVA:</p>{{ $tasaAnualCIVA }}
-<p>Tasa Mensual s/IVA:</p>{{ $tasaMensualSIVA }}
-<p>Tasa Mensual c/IVA:</p>{{ $tasaMensualCIVA }}
-<p>Pago Mensual:</p>{{ $pagoMensual}}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+<p class="text-uppercase font-weight-bold">Plazo:</p>{{ $plazo }}<!--Forma de llamar la variable function-->
+<p class="text-uppercase font-weight-bold">Monto:</p>{{ $monto }}
+<p class="text-uppercase font-weight-bold">Tasa Anual:</p>{{ $tasaAnual }}
+<p class="text-uppercase font-weight-bold">Tasa Anual c/IVA:</p>{{ $tasaAnualCIVA }}
+<p class="text-uppercase font-weight-bold">Tasa Mensual s/IVA:</p>{{ $tasaMensualSIVA }}
+<p class="text-uppercase font-weight-bold">Tasa Mensual c/IVA:</p>{{ $tasaMensualCIVA }}
+<p class="text-uppercase font-weight-bold">Pago Mensual:</p>{{ $pagoMensual}}
+<p></p>
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <p class="text-center text-uppercase"><strong>Plazo (Meses,semanas,dias)</strong></p>
-        </div>
-        <div class="col">
-            <p class="text-center text-uppercase"><strong>Saldo insoluto</strong></p>
-        </div>
-        <div class="col">
-            <p class="text-center text-uppercase"><strong>Pago mensual total</strong></p>
-        </div>
-        <div class="col">
-            <p class="text-center text-uppercase"><strong>Capital</strong></p>
-        </div>
-        <div class="col">
-            <p class="text-center text-uppercase"><strong>Intereses</strong></p>
-        </div>
-        <div class="col">
-            <p class="text-center text-uppercase"><strong>IVA</strong></p>
-        </div>
-    </div>
-
-    
-    @foreach($results as $result)
-        
-    <div class="row">
-        <div class="col">
-            <p class="text-center">{{ $result['plazo'] }}</p>
-        </div>
-        <div class="col">
-            <p class="text-center">{{ $result['saldo_insoluto'] }}</p>
-        </div>
-        <div class="col">
-            <p class="text-center">{{ $result['pago_mensual'] }}</p>
-        </div>
-        <div class="col">
-            <p class="text-center">{{ $result['capital'] }}</p>
-        </div>
-        <div class="col">
-            <p class="text-center">{{ $result['intereses'] }}</p>
-        </div>
-        <div class="col">
-            <p class="text-center">{{ $result['iva'] }}</p>
-        </div>
-    </div>
-    
-    @endforeach
+    <table class="table table-striped table-sm text-center">
+        <thead>
+            <tr>
+                <th>Plazo (Meses,semanas,dias)</th>
+                <th>Saldo insoluto</th>
+                <th>Pago mensual total</th>
+                <th>Capital</th>
+                <th>Intereses</th>
+                <th>IVA</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($results as $result)
+                <tr>
+                    <td>{{ $result['plazo'] }}</td>
+                    <td>{{ $result['saldo_insoluto'] }}</td>
+                    <td>{{ $result['pago_mensual'] }}</td>
+                    <td>{{ $result['capital'] }}</td>
+                    <td>{{ $result['intereses'] }}</td>
+                    <td>{{ $result['iva'] }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
 
-    <p><a href="{{ route ('holders.index') }}">
+    <p><a href="{{ route ('holders.index') }}" class="btn btn-primary btn-sm">
     Regresar a la lista de cuentahabientes</a></p>
-
-    </p>
+</main>
 @endsection
