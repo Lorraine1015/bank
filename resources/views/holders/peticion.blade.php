@@ -2,6 +2,9 @@
 @section('content')
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
     <h1>Peticion de credito</h1>
+    @if ($errors->any())<!-- Si existe un error en la peticion,me despliega un mensaje junto con el ACCOUNTSMOVEMENTSCONTROLLER  -->
+        {!! implode('', $errors->all('<div class="alert alert-danger">:message</div>')) !!}
+    @endif
     <form method="GET" action="{{ route ('holders.credito',['holder'=>$holder]) }}">
     <br/>
     @csrf

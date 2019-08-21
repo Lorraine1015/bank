@@ -16,8 +16,9 @@ class AccountMovementsController extends Controller
     }
     function retiro(Request $req,Account $account){
         if ($req->input('movement.cantidad')> $account->saldo_actual){
-            printf('ERROR:NO HAY SUFICIENTE DINERO.');
-            return view('movements.retiro',['account'=>$account]);
+            //printf('ERROR:NO HAY SUFICIENTE DINERO.');
+            return back()->withErrors("No hay suficiente dinero");//Me crea el error y me regresa a la peticion anterior junto con el mensaje asignado
+            // return view('movements.retiro',['account'=>$account]);
         }
         else{
             $movement=$req->input('movement'); 
@@ -53,8 +54,9 @@ class AccountMovementsController extends Controller
         
         //Se aplica el retiro de la cuenta que transfiere.
         if ($cantidad > $account->saldo_actual){
-            printf('ERROR:NO HAY SUFICIENTE DINERO.');
-            return view('movements.transfer',['account'=> $account ,'accounts'=> $accounts]);
+            return back()->withErrors("No hay suficiente dinero");//Me crea el error y me regresa a la peticion anterior junto con el mensaje asignado
+            /*printf('ERROR:NO HAY SUFICIENTE DINERO.');
+            return view('movements.transfer',['account'=> $account ,'accounts'=> $accounts]);*/
         }
         else{
             //Se crea como tal el movimiento de RETIRO en la DB

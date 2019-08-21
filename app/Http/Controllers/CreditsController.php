@@ -79,8 +79,9 @@ class CreditsController extends Controller
             Credit::create($credit);//CREA EL CREDITO 
             printf('APROBADO');
         }else{
-            printf('NO ES APTO PARA EL CREDITO');
-            return view('holders.peticion',['holder'=>$holder]);
+            return back()->withErrors("No hay suficiente dinero");//Me crea el error y me regresa a la peticion anterior junto con el mensaje asignado
+            /*printf('NO ES APTO PARA EL CREDITO');
+            return view('holders.peticion',['holder'=>$holder]);*/
         }
         
         //$movement = DB::table('movements')->where('name', 'Daniel')->value('lastname');
